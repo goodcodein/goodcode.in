@@ -1,5 +1,6 @@
 ---
 title: Annotating variables with underscore variables to make code more readable
+date: 2017-07-14
 tags:
   - elixir
   - readability
