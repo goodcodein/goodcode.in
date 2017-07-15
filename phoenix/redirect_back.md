@@ -1,4 +1,4 @@
-- - -
+---
 title: How to redirect to back or the root path similar to rails in a phoenix app
 tags:
   - phoenix
@@ -6,7 +6,7 @@ tags:
   - root
   - back
   - referer
-- - -
+---
 
 While writing a phoenix app you may want to redirect a user back to where they came
 from. This is possible because [HTTP sends you a refer header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer) which tells you which page/url the user came from.

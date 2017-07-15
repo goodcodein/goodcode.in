@@ -1,9 +1,9 @@
-- - -
+---
 title: Annotating variables with underscore variables to make code more readable
 tags:
   - elixir
   - readability
-- - -
+---
 
 We should always strive to make our code as readable as possible. Underscore variables
 aid is in making our code more readable by annotating literal values with meanings.
