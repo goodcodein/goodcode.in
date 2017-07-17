@@ -8,8 +8,8 @@ tags:
   - prod.exs
 ---
 
-While deploying my first phoenix app. I spent 2 hours trying to debug why my phoenix app wasn't showing up on localhost:4000.
-I had my head scratching for a long time before reading these lines in the `prod.exs` file
+While deploying my first phoenix app. I spent 2 hours trying to debug why my phoenix app wasn't showing up on http://localhost:4000.
+I usually test it using `curl -v http://localhost:4000/` from my server. I had my head scratching for a long time before reading these lines in the `prod.exs` file
 
 ```elixir
 # ## Using releases
