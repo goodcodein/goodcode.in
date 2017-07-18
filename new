@@ -12,7 +12,7 @@ end
 
 folder = ARGV.first
 title = ARGV.drop(1).join(" ")
-filepath = File.join("", "#{title.downcase.gsub(/[^a-z0-9-]+/,'-').gsub(/^-+|-+$/, '')}.md")
+filepath = File.join(folder, "#{title.downcase.gsub(/[^a-z0-9-]+/,'-').gsub(/^-+|-+$/, '')}.md")
 
 if File.exists?(filepath)
   puts <<-EOS
@@ -24,6 +24,7 @@ if File.exists?(filepath)
   exit(-1)
 end
 
+id = Dir.glob("#{folder}/*").map{|f| File.readlines(f).drop(1).take(1).first.chomp.split(":").last.to_i }.max + 1
 File.write(filepath, render_template(id, title, folder))
 
 puts "created file: #{filepath}"
@@ -35,7 +36,7 @@ __END__
 id: <%= id %>
 title: "<%= title %>"
 date: <%= Time.now.utc.iso8601 %>
-layout: post
+layout: default
 tags:
   - <%= folder %>
 ---
