@@ -1,0 +1,43 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+# ./new helper script to create new posts
+
+require 'erb'
+require 'time'
+
+def render_template(id, title, folder)
+  # The DATA comes from whatever is beneath the END block at the bottom of the page
+  ERB.new(DATA.read, _safe_level = nil, _trim_mode = true).result(binding)
+end
+
+folder = ARGV.first
+title = ARGV.drop(1).join(" ")
+filepath = File.join("", "#{title.downcase.gsub(/[^a-z0-9-]+/,'-').gsub(/^-+|-+$/, '')}.md")
+
+if File.exists?(filepath)
+  puts <<-EOS
+  We don't want to overwrite your unsaved changes now, do we?
+  Delete the file at #{filepath} and run this again.
+  Here is a command for you:
+  rm "#{filepath}"
+  EOS
+  exit(-1)
+end
+
+File.write(filepath, render_template(id, title, folder))
+
+puts "created file: #{filepath}"
+
+# whatever comes after the END marker is used as the ERB template in the
+# render_template function
+__END__
+---
+id: <%= id %>
+title: "<%= title %>"
+date: <%= Time.now.utc.iso8601 %>
+layout: post
+tags:
+  - <%= folder %>
+---
+
+Go ahead and write something awesome! You can do it!!!
