@@ -24,7 +24,9 @@ if File.exists?(filepath)
   exit(-1)
 end
 
-id = Dir.glob("#{folder}/*").map{|f| File.readlines(f).drop(1).take(1).first.chomp.split(":").last.to_i }.max + 1
+require 'fileutils'
+FileUtils.mkdir_p(folder)
+id = Dir.glob("#{folder}/*").map{|f| File.readlines(f).drop(1).take(1).first.chomp.split(":").last.to_i }.max.to_i + 1
 File.write(filepath, render_template(id, title, folder))
 
 puts "created file: #{filepath}"
