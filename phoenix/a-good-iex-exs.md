@@ -1,7 +1,7 @@
 ---
 id: 1
 title: A good .iex.exs for your phoenix apps
-date: 2017-07-14
+date: 2017-07-14T00:00:00Z
 tags:
   - phoenix
   - iex

@@ -1,7 +1,7 @@
 ---
 id: 2
 title: Changes to your prod.exs before deploying phoenix apps using distillery
-date: 2017-07-17
+date: 2017-07-17T00:00:00Z
 tags:
   - phoenix
   - distillery

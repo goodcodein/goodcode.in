@@ -1,7 +1,7 @@
 ---
 id: 1
 title: How to redirect to back or the root path similar to rails in a phoenix app
-date: 2017-07-14
+date: 2017-07-14T00:00:00Z
 tags:
   - phoenix
   - redirect
