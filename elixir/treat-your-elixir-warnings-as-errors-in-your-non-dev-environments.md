@@ -5,6 +5,9 @@ date: 2017-07-19T10:36:54Z
 layout: default
 tags:
   - elixir
+  - warnings_as_errors
+  - mix
+  - compiler
 ---
 
 One of the bittersweet things about [Go](https://golang.org/) is its relentlessness with warnings.
