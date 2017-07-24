@@ -49,28 +49,28 @@ Here are the steps I took, hopefully it helps others in the future:
 
   10. Now, write a script which can be executed from the new server.
 
-          #!/bin/bash -e
-          echo stopping simpleform
-          # this is so we can drop the database on the new remote server
-          sudo systemctl stop simpleform.target
-          # drop the database on the new server
-          echo dropping db
-          sudo -u simpleform dropdb simpleform_production
-          # create a fresh database for your new remote server
-          echo creating db
-          sudo -u simpleform createdb simpleform_production
-          # stop the application on the old server
-          echo stopping simpleform
-          ssh ubuntu@getsimpleform.com "sudo stop simpleform"
-          # import the database from the old server to thew new server
-          echo importing db
-          (ssh ubuntu@getsimpleform.com "sudo -u postgres  pg_dump -Fc --no-acl --no-owner simpleform_production | gzip" | gzip -d | sudo -u simpleform pg_restore --verbose --clean --no-acl --no-owner -d simpleform_production) || /bin/true
-          # start the application on the new server
-          echo start local simpleform
-          sudo systemctl start simpleform.target
-          echo reloading remote nginx
-          # reload the nginx configuration on the new server
-          ssh ubuntu@getsimpleform.com sudo nginx -s reload
+        #!/bin/bash -e
+        echo stopping simpleform
+        # this is so we can drop the database on the new remote server
+        sudo systemctl stop simpleform.target
+        # drop the database on the new server
+        echo dropping db
+        sudo -u simpleform dropdb simpleform_production
+        # create a fresh database for your new remote server
+        echo creating db
+        sudo -u simpleform createdb simpleform_production
+        # stop the application on the old server
+        echo stopping simpleform
+        ssh ubuntu@getsimpleform.com "sudo stop simpleform"
+        # import the database from the old server to thew new server
+        echo importing db
+        (ssh ubuntu@getsimpleform.com "sudo -u postgres  pg_dump -Fc --no-acl --no-owner simpleform_production | gzip" | gzip -d | sudo -u simpleform pg_restore --verbose --clean --no-acl --no-owner -d simpleform_production) || /bin/true
+        # start the application on the new server
+        echo start local simpleform
+        sudo systemctl start simpleform.target
+        echo reloading remote nginx
+        # reload the nginx configuration on the new server
+        ssh ubuntu@getsimpleform.com sudo nginx -s reload
 
   11. Change your DNS entries so that they point to the new server's IP
 
