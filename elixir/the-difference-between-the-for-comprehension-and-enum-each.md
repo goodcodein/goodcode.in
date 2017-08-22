@@ -34,6 +34,7 @@ Be careful about using for in your code, especially your tests. I had a small te
 
 
 ```
+assert length(stats) == 2
 for {:resp, stat} <- stats do
   assert stat.meta == %{a: 3}
   assert stat.time_ms in 10..20
@@ -49,4 +50,5 @@ for {:resp, stat} <- stats do
 end
 ```
 
-All because I had an incorrect pattern match. I had `{:resp, stat}` instead of a `{ {:resp, _id}, stat }`
+All because I had an incorrect pattern match. I had `{:resp, stat}` instead of a `{ {:resp, _id}, stat }`.
+So, the for was filtering out all the `stats` and the inner block was not being executed even once.
