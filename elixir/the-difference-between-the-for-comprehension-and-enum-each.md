@@ -13,12 +13,15 @@ tags:
 Look at the code below and try to guess what happens when you run the following lines of code.
 
 ### for
+
 ```
 for {:resp, f} <- [{:resp, 3}, :b, {:resp, 4}] do
   IO.inspect f
 end
+```
 
 ### Enum.each
+
 ```
 Enum.each([{:resp, 3}, :b, {:resp, 4}], fn {:resp, f} ->
   IO.inspect f
