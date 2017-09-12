@@ -13,13 +13,14 @@ tags:
 ---
 
 There is a neat trick which I bumped into while doing Rails development which I've
-been using for the semver value of my Elixir Apps.
+been using to set the semver value of my Elixir Apps.
+
 
 This works if you use Git for your version control. The basic idea is to use git tags,
 and the number of commits since the git tag to generate your version number. Elixir
 allows you to use a version string like below (You can read more about this at https://hexdocs.pm/elixir/Version.html)
 
-**[MAJOR].[MINOR].[PATCH]-[pre_release_info]+[build_info]**
+    [MAJOR].[MINOR].[PATCH]-[pre_release_info]+[build_info]
 
 When I want to bump the major or the minor version, I create a tag with the version information e.g. `v1.4` using the command
 
@@ -62,7 +63,7 @@ end
 ```
 
 Creating such a beautiful version number without showing it anywhere wouldn't be very useful :)
-I usually put the version information of the app in a footer and the header inside a meta tag (if it is a phoenix app)
+I usually put the version information of the app in a footer and the head inside a meta tag (if it is a phoenix app)
 
 ```
 defmodule Dan do
@@ -75,6 +76,7 @@ end
 ```
 
 Inside the `app.html`
+
 ```
 <!doctype html>
 ...
@@ -83,7 +85,10 @@ Inside the `app.html`
 ```
 
 So, now when something goes wrong I can take a look at the current version of the app by visiting a page and know which precise git commit reproduces the problem.
+Our QA team too uses this information when filing bug reports.
+
 
 I also send this version info to my error monitoring and metric services like Rollbar and AppSignal
+
 
 Hope you find this technique useful :)
