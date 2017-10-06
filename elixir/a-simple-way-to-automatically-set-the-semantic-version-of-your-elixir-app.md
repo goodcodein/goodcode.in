@@ -84,7 +84,7 @@ Inside the `app.html`
 ...
 ```
 
-So, now when something goes wrong I can take a look at the current version of the app by visiting a page and know which precise git commit reproduces the problem.
+So, now when something goes wrong I can take a look at the current version of the app by visiting a page, and know which precise git commit reproduces the problem.
 Our QA team too uses this information when filing bug reports.
 
 
