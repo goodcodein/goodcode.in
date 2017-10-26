@@ -31,16 +31,16 @@ Knowing this, all I had to do was:
   1. Move the mix tasks from `./lib/mix/tasks` to `./mix/tasks` so that it is not picked up by default.
   2. Change `mix.exs` by adding the following to the project, so that in the `:dev` env of the hex package our mix task is loaded/compiled.
 
-          # mix.exs
-          def project do
-            [app: :honeybadger,
-            # ...
-             elixirc_paths: elixirc_paths(Mix.env),
-            # ...
-            ]
-          end
+            # mix.exs
+            def project do
+              [app: :honeybadger,
+              # ...
+               elixirc_paths: elixirc_paths(Mix.env),
+              # ...
+              ]
+            end
 
-          defp elixirc_paths(:dev), do: ["lib", "mix"]
-          defp elixirc_paths(_), do: ["lib"]
+            defp elixirc_paths(:dev), do: ["lib", "mix"]
+            defp elixirc_paths(_), do: ["lib"]
 
 *Now* my hex specific mix tasks are loaded only when I am working on my hex package. And the users of my hex package don't see my mix utility tasks.
